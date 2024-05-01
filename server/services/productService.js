@@ -21,6 +21,9 @@ const productService = {
     },
     getDetail: async (id, condition) => {
         return await ProductRepository.getDetailProduct(id,condition);
+    },
+    search: async (search) => {
+        return await ProductRepository.search(search);
     }
 }
 

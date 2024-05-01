@@ -13,8 +13,10 @@ import 'swiper/css/effect-fade';
 import {EffectFade, Mousewheel, Pagination } from 'swiper/modules';
 import './SlideBanner2.css'
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function SlideBanner2() {
+    const {t,i18n} = useTranslation();
   return (
     <div className='slide-banner2'>
         {/* <div>hello</div> */}
@@ -53,7 +55,7 @@ export default function SlideBanner2() {
 
                             <div className="btn-buy mt-5">
                                 <Link className="btn btn-md btn-dark text-white" >
-                                    Shop now
+                                {t('app.content._shop_now')}
                                 </Link>
                             </div>
                         </div>
@@ -96,7 +98,7 @@ export default function SlideBanner2() {
 
                             <div className="btn-buy mt-5">
                                 <Link className="btn btn-md btn-dark" >
-                                    Shop now
+                                {t('app.content._shop_now')}
                                 </Link>
                             </div>
                         </div>
@@ -140,7 +142,7 @@ export default function SlideBanner2() {
 
                             <div className="btn-buy mt-5">
                                 <Link className="btn btn-md btn-dark" >
-                                    Shop now
+                                {t('app.content._shop_now')}
                                 </Link>
                             </div>
                         </div>

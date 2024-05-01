@@ -136,7 +136,7 @@ const OrderDetail = () => {
                     </div>
 
                     <div className='box-products'>
-                        <div class="table-responsive-sm">
+                    <div class="table-responsive-md">
                             <table class="table">
                                 <thead>
                                     <tr>

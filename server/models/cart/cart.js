@@ -24,14 +24,6 @@ Cart.belongsTo(Variation,{
     foreignKey: 'variation_id'
 })
 
-// Cart.hasOne(Variation,{
-//     foreignKey: 'variation_id'
-// })
-
-// Variation.hasMany(Cart,{
-//     foreignKey:'variation_id'
-// })
-
 
 Cart.belongsTo(User,{
     foreignKey: 'user_id'

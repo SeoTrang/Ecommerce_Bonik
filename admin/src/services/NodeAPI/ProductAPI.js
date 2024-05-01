@@ -58,6 +58,48 @@ const ProductAPI = {
         }
     },
 
+
+    Update: async (data,product_id)=>{
+        try {
+            let result = null;
+            console.log(data);
+            await axios.put('/product/'+product_id,{data: data})
+            .then(res => {
+                console.log(res.data);
+                result = res.data;
+            })
+            .catch (err => {
+                console.log(err);
+            })
+
+            if(result) return result;
+            return false;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    },
+
+    getProductById: async (product_id) => {
+        try {
+            let result = null;
+            await axios.get('/product/'+product_id)
+            .then(res => {
+                console.log(res.data);
+                result = res.data;
+            })
+            .catch (err => {
+                console.log(err);
+            })
+
+            if(result) return result;
+            return false;
+        } catch (error) {
+            console.log(error);
+            return false;
+            
+        }
+    }
     
 }
 

@@ -83,8 +83,8 @@ const Home = () => {
                                     <img src="https://i.ibb.co/sVxYFDY/product-cat-1.png" alt="" />
                                 </div>
                                 <div className="title mt-3">
-                                    Tai nghe
-                                    {/* {t('content.functional')} */}
+                                    
+                                    {t('app.content._earphone')}
                                 </div>
                                 {/* <div onClick={()=>changeLanguage('en')} className="des">
                                     3 Product
@@ -100,7 +100,7 @@ const Home = () => {
                                 </div>
               
                                 <div className="title mt-3">
-                                    Điện thoại
+                                    {t('app.content._mobilePhone')}
                                 </div>
                                 {/* <div className="des">
                                     3 Product
@@ -114,7 +114,7 @@ const Home = () => {
                                 </div>
               
                                 <div className="title mt-3">
-                                    CPU
+                                    {t('app.content._cpu')}
                                 </div>
                                 {/* <div className="des">
                                     2 Product
@@ -128,7 +128,7 @@ const Home = () => {
                                 </div>
               
                                 <div className="title mt-3">
-                                    Smart Watch
+                                    {t('app.content._smartwatch')}
                                 </div>
                                 {/* <div className="des">
                                     3 Product
@@ -142,7 +142,7 @@ const Home = () => {
                                 </div>
               
                                 <div className="title mt-3">
-                                    Bluetooth
+                                    {t('app.content._bluetooth')}
                                 </div>
                                 {/* <div className="des">
                                     2 Product
@@ -164,11 +164,11 @@ const Home = () => {
                                 <div className="text-right">
                                     <div className="title">
                                         {/* Free Delivery */}
-                                        Miễn phí giao hàng
+                                        {t('app.content._Free_Delivery')}
                                     </div>
                                     <div className="des">
                                         {/* Orders from all item */}
-                                        Đơn hàng từ 200k trở lên
+                                        {t('app.content._Orders_from_all_item')}
                                     </div>
                                 </div>
 
@@ -184,11 +184,11 @@ const Home = () => {
                                 <div className="text-right">
                                     <div className="title">
                                         {/* Return & Refund */}
-                                        Hoàn lại tiền
+                                        {t('app.content._Return&_Refund')}
                                     </div>
                                     <div className="des">
                                         {/* Money back guarantee */}
-                                        Nếu phát sinh sự cố
+                                        {t('app.content._If_a_problem_occurs')}
                                     </div>
                                 </div>
 
@@ -204,11 +204,11 @@ const Home = () => {
                                 <div className="text-right">
                                     <div className="title">
                                         {/* Member Discount */}
-                                        Giảm giá thành viên
+                                        {t('app.content._Member_Discount')}
                                     </div>
                                     <div className="des">
                                         {/* Onevery order over $140.00 */}
-                                        Mỗi đơn hàng trên 500k
+                                        {t('app.content._Onevery_order_over_500k')}
                                     </div>
                                 </div>
 
@@ -226,11 +226,11 @@ const Home = () => {
                                 <div className="text-right">
                                     <div className="title">
                                         {/* Support 24/7 */}
-                                        Hỗ trợ 24/7
+                                        {t('app.content._Support_24/7')}
                                     </div>
                                     <div className="des">
                                         {/* Contact us 24 hours a day */}
-                                        Liên hệ ngay 
+                                        {t('app.content._contact_now')}
                                     </div>
                                 </div>
 
@@ -256,7 +256,7 @@ const Home = () => {
                                         </h1>
                                         <br/>
                                         <Link className='mt-5'>
-                                            <span className='me-2'>Shop Now</span>
+                                            <span className='me-2'>{t('app.content._shop_now')}</span>
                                             <i class="fa-solid fa-arrow-right"></i>
                                         </Link>
                                     </div>
@@ -274,7 +274,7 @@ const Home = () => {
                                         </h6>
                                         <br />
                                         <Link className='mt-5'>
-                                            <span className='me-2'>Shop Now</span>
+                                            <span className='me-2'>{t('app.content._shop_now')}</span>
                                             <i class="fa-solid fa-arrow-right"></i>
                                         </Link>
                                 </div>
@@ -296,7 +296,7 @@ const Home = () => {
 
                 <NewArrivals/>
 
-                <ElectronicSmProducts/> 
+                {/* <ElectronicSmProducts/>  */}
 
                 <section className='news-articles'>
                     <div className="container">
@@ -304,7 +304,7 @@ const Home = () => {
                             <div className="row align-items-center justify-content-between">
                                 <div className="col-12 col-xl-4 col-lg-4 col-md-6  title">
                                     <h1>
-                                        Latest news & articles
+                                    {t('app.content._Latest_news_articles')}
                                     </h1>
                                 </div>
                                 <div className=" col-xl-5 col-lg-5 d-none d-xl-block d-lg-block line">
@@ -314,7 +314,7 @@ const Home = () => {
                                     <div className="aciton ps-md-5">
                                         <button className='btn btn-primary btn-md'>
                                             <span className='me-2'>
-                                                View All Blogs
+                                            {t('app.content._view_all_blogs')}
                                             </span>
                                             <i class="fa-solid fa-arrow-right"></i>
                                         </button>
@@ -358,7 +358,7 @@ const Home = () => {
 
                                                 <div className="action-button">
                                                     <Link className='btn btn-sm mt-4'>
-                                                        <span className='me-2'>Read More</span>
+                                                        <span className='me-2'>{t('app.content._read_more')}</span>
                                                         <i class="fa-solid fa-arrow-right"></i>
                                                     </Link>
                                                 </div>
@@ -392,7 +392,7 @@ const Home = () => {
 
                                                 <div className="action-button">
                                                     <Link className='btn btn-sm mt-4'>
-                                                        <span className='me-2'>Read More</span>
+                                                        <span className='me-2'>{t('app.content._read_more')}</span>
                                                         <i class="fa-solid fa-arrow-right"></i>
                                                     </Link>
                                                 </div>
@@ -426,7 +426,7 @@ const Home = () => {
 
                                                 <div className="action-button">
                                                     <Link className='btn btn-sm mt-4'>
-                                                        <span className='me-2'>Read More</span>
+                                                        <span className='me-2'>{t('app.content._read_more')}</span>
                                                         <i class="fa-solid fa-arrow-right"></i>
                                                     </Link>
                                                 </div>
@@ -460,7 +460,7 @@ const Home = () => {
 
                                                 <div className="action-button">
                                                     <Link className='btn btn-sm mt-4'>
-                                                        <span className='me-2'>Read More</span>
+                                                        <span className='me-2'>{t('app.content._read_more')}</span>
                                                         <i class="fa-solid fa-arrow-right"></i>
                                                     </Link>
                                                 </div>
@@ -494,7 +494,7 @@ const Home = () => {
 
                                                 <div className="action-button">
                                                     <Link className='btn btn-sm mt-4'>
-                                                        <span className='me-2'>Read More</span>
+                                                        <span className='me-2'>{t('app.content._read_more')}</span>
                                                         <i class="fa-solid fa-arrow-right"></i>
                                                     </Link>
                                                 </div>
@@ -528,7 +528,7 @@ const Home = () => {
 
                                                 <div className="action-button">
                                                     <Link className='btn btn-sm mt-4'>
-                                                        <span className='me-2'>Read More</span>
+                                                        <span className='me-2'>{t('app.content._read_more')}</span>
                                                         <i class="fa-solid fa-arrow-right"></i>
                                                     </Link>
                                                 </div>
@@ -570,8 +570,8 @@ const Home = () => {
                             <div className="col-12 col-xl-5 col-lg-5">
                                 <div className="input-right d-flex justify-content-center">
                                     <div class="input-group row">
-                                        <input type="email" class="form-control col-9" placeholder="Enter Your Email" aria-label="" aria-describedby="button-addon2"/>
-                                        <button class="btn btn-outline-secondary btn-dark col-3" type="button" id="button-addon2">Subscribe</button>
+                                        <input type="email" class="form-control col-9" placeholder={t('app.content._enter_your_email')} aria-label="" aria-describedby="button-addon2"/>
+                                        <button class="btn btn-outline-secondary btn-dark col-3" type="button" id="button-addon2">{t('app.content._subscribe')}</button>
                                     </div>
                                 </div>
 

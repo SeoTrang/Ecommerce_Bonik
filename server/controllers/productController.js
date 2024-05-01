@@ -40,6 +40,22 @@ const productController = {
             return res.status(500).json('error', error);
         }
     },
+    search:async(req, res) => {
+        try {
+            console.log('================================================================');
+            console.log('hello');
+            const search = req.query.search || null;
+            if(!search) return res.status(400).json('Thiếu dữ liệu cần thiết !!');
+
+            console.log(search);
+            const result = await productService.search(search);
+            if(result) return res.status(200).json(result);
+            return res.status(404).json('not found');
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json('error', error);
+        }
+    },
     postProduct: async (req,res)=>{
         try {
             // console.log(req.body.data);
@@ -66,7 +82,24 @@ const productController = {
         }
     },
     putProduct: async (req,res)=>{
-        return res.json("put Product");
+
+        try {
+            // console.log(req.body.data);
+            // debugger;
+            // return res.json('test')
+            const product_id = req.params.id;
+            if(!req.body.data) return res.status(400).json({ error: 'Thiếu dữ liệu cần thiết.' })
+            const result = await productService.update(product_id,req.body.data);
+            if(!result) return res.status(500).json({ error: 'lỗi khi thêm vào databases.' });
+            
+            return res.status(200).json( result );
+
+
+            
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({ error: error});
+        }
     },
     deleteProduct: async (req,res)=>{
         return res.json("delete Product");

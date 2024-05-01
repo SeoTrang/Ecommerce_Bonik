@@ -96,7 +96,10 @@ button:focus-visible {
   font-family: 'Public Sans', sans-serif;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
+  --main-blur-color: #7d879c;
 }
+
+
 
 ::-webkit-scrollbar {
   width: 5px; /* Chiều rộng của thanh cuộn */
@@ -109,6 +112,10 @@ button:focus-visible {
 /* Thay đổi màu ngón tay cuộn khi hover */
 ::-webkit-scrollbar-thumb:hover {
   background-color: #0989FF;
+}
+
+.main-blur-color{
+  color: var(--main-blur-color);
 }
 
 body a{
@@ -169,6 +176,24 @@ body a{
 }
 
 
+.pedding{
+  color: #b76e00;
+  background-color: #ffab0029;
+}
+.completed{
+  color: #118d57;
+  background-color:#22c55e29; 
+  padding: 0px 6px;
+  border-radius: 5px;
+}
+.cancelled{
+  color: #b71d18;
+  background-color: #ff563029;
+}
+.delivering{
+  color: #637381;
+  background-color: #919eab29;
+}
 
 .options-top .action .box-menu{
   width: 36px;

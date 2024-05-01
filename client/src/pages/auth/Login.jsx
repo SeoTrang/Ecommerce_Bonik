@@ -53,7 +53,7 @@ const Login = () => {
 
                         <div className="title-top text-center">
                             <h2>
-                                Login to Shofy.
+                                Login to Bonik.
                             </h2>
                             <div className="action-to-register mt-2">
                                 <span>

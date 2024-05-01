@@ -15,7 +15,7 @@ const db = require('./config/db');
 const route = require('./routes/index.js');
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))

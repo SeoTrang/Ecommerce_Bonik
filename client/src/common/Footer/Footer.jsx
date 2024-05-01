@@ -3,8 +3,10 @@ import React from 'react';
 import './Footer.css';
 import Logo2 from '../../assets/img/logo_bonik.svg';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+    const {t,i18n} = useTranslation();
     return (
         <div className='footer ' id='footer'>
             <div className="container">
@@ -14,7 +16,7 @@ const Footer = () => {
                             <img src={Logo2} alt="" />
                         </div>
                         <div className="short-description mt-4">
-                            We are a team of designers and developers that create high quality WordPress
+                            {t('app.footer._slogan')}
                         </div>
 
                         <div className="social-network mt-4">
@@ -35,39 +37,39 @@ const Footer = () => {
                     <div className="col-xl-2 col-lg-3 col-md-4 col-sm-6">
                         <div className="my-acc nav-footer">
                             <div className="title">
-                                <h5>My Account</h5>
+                                <h5>{t('app.footer._My_Account')}</h5>
                             </div>
                             <div className="list-menu">
                                 <ul>
                                     <li>
                                         <Link>
-                                            Track Orders
+                                            {t('app.footer._Track_Orders')}
                                         </Link>
 
                                     </li>
                                     <li>
                                         <Link>
-                                            Shipping
+                                        {t('app.footer._Shipping')}
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            Wishlist
+                                        {t('app.footer._Wishlist')}
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            My Account
+                                        {t('app.footer._My_Account')}
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            Order History
+                                        {t('app.footer._Order_History')}
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            Returns
+                                        {t('app.footer._Returns')}
                                         </Link>
                                     </li>
                                 </ul>
@@ -77,39 +79,39 @@ const Footer = () => {
                     <div className="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                         <div className="infomation nav-footer">
                             <div className="title">
-                                <h5>Infomation</h5>
+                                <h5>{t('app.footer._Infomation')}</h5>
                             </div>
                             <div className="list-menu">
                                 <ul>
                                     <li>
                                         <Link>
-                                            Our Story
+                                        <h5>{t('app.footer._Infomation')}</h5>
                                         </Link>
 
                                     </li>
                                     <li>
                                         <Link>
-                                            Careers
+                                        {t('app.footer._Our_Story')}
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            Privacy Policy
+                                        {t('app.footer._Careers')}
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            Terms & Conditions
+                                        {t('app.footer._Privacy_Policy')}
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            Latest News
+                                        {t('app.footer._Terms_&_Conditions')}
                                         </Link>
                                     </li>
                                     <li>
                                         <Link>
-                                            Contact Us
+                                        {t('app.footer._Latest_News')}
                                         </Link>
                                     </li>
                                 </ul>
@@ -120,10 +122,10 @@ const Footer = () => {
                         <div className="talk-to-us">
                             <div className="title">
                                 <h5>
-                                    Talk To Us
+                                    {t('app.footer._Contact_Us')}
                                 </h5>
                             </div>
-                            <span>Got Questions? Call us</span>
+                            <span>{t('app.footer._Got_Questions?_Call_us')}</span>
                             <h5 className='mt-2'>
                                 +670 413 90 762
                             </h5>
@@ -134,7 +136,7 @@ const Footer = () => {
                                     
                                 </span>
                                 <span className="text">
-                                    shofy@support.com
+                                    admin.bonik@support.com
                                 </span>
                             </div>
                             <div className="address items-bottom mt-2">
@@ -142,8 +144,8 @@ const Footer = () => {
                                     <svg _ngcontent-ng-c1082963611="" width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path _ngcontent-ng-c1082963611="" d="M8.50001 10.9417C9.99877 10.9417 11.2138 9.72668 11.2138 8.22791C11.2138 6.72915 9.99877 5.51416 8.50001 5.51416C7.00124 5.51416 5.78625 6.72915 5.78625 8.22791C5.78625 9.72668 7.00124 10.9417 8.50001 10.9417Z" stroke="currentColor" stroke-width="1.5"></path><path _ngcontent-ng-c1082963611="" d="M1.21115 6.64496C2.92464 -0.887449 14.0841 -0.878751 15.7889 6.65366C16.7891 11.0722 14.0406 14.8123 11.6313 17.126C9.88298 18.8134 7.11704 18.8134 5.36006 17.126C2.95943 14.8123 0.210885 11.0635 1.21115 6.64496Z" stroke="currentColor" stroke-width="1.5"></path></svg>
                                 </span>
                                 <span className="text">
-                                    79 Sleepy Hollow St.
-                                    Jamaica, New York 1432
+                                    Số nhà 79, xóm nước 2, xã Quyết Thắng, thành phố Thái Nguyên, Thái Nguyên.
+                                   
                                 </span>
                             </div>
 

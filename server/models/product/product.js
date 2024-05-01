@@ -32,13 +32,16 @@ const Product = sequelize.define('products',{
 
 Category.hasMany(Product,{
     foreignKey: 'category_id',
+    onDelete: 'CASCADE'
 })
 Brand.hasMany(Product,{
     foreignKey: 'brand_id',
+    onDelete: 'CASCADE'
 })
 
 Product.belongsTo(Brand, {
-    foreignKey: 'brand_id', // This specifies the foreign key column name
+    foreignKey: 'brand_id', 
+    // This specifies the foreign key column name
     
 });
 Product.belongsTo(Category, {

@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 
 import './NavMobile.css'
+import { useTranslation } from 'react-i18next';
 
 const NavMobile = ({open,handleCloseNavMobile}) => {
-
+    const { t, i18n } = useTranslation()
     console.log(open);
 
     const [classNavParentActive,setClassNavParentActive] = useState();
@@ -145,7 +146,7 @@ const NavMobile = ({open,handleCloseNavMobile}) => {
                             </div>
                             <hr />
                              <div className="nav-parent mt-2">
-                                 <span className='nav-title'>Home</span>
+                                 <span className='nav-title'>{t('app.header.Home')}</span>
  
                              </div>
                              <div
@@ -154,7 +155,7 @@ const NavMobile = ({open,handleCloseNavMobile}) => {
                                  <div 
                                      className='row '>
                                      <div className='col-10'>
-                                         <span className='nav-title '>Category</span>
+                                         <span className='nav-title '>{t('app.header.Category')}</span>
                                      </div>
                                      <div className='col-2'>
                                          <span className='nav-icon-down'><i class="fa-solid fa-angle-right"></i></span>
@@ -170,7 +171,7 @@ const NavMobile = ({open,handleCloseNavMobile}) => {
                                                  <div className="row mt-2">
                                                      <div className="col-10">
                                                          <div className="nav-child-title">
-                                                             Electronics
+                                                             {t('app.header.electronics')}
                                                          </div>
  
                                                      </div>
@@ -185,31 +186,43 @@ const NavMobile = ({open,handleCloseNavMobile}) => {
                                                          <li className='mt-2 row'>
                                                              <Link 
                                                              onClick={handleClose}
-                                                             to={'/product'} className='col-10'>Mobile phones </Link> 
+                                                             to={'/product'} className='col-10'>{t('app.header._mobilePhone')}</Link> 
                                                              <i class="col-2 fa-solid fa-arrow-right"></i>
                                                          </li>
                                                          <li className='mt-2 row'>
                                                              <Link 
                                                              onClick={handleClose}
-                                                             className='col-10'>Computers and laptops</Link>
+                                                             className='col-10'>{t('app.header._laptop')}</Link>
                                                              <i class="col-2 fa-solid fa-arrow-right"></i>
                                                          </li>
                                                          <li className='mt-2 row'>
                                                              <Link 
                                                              onClick={handleClose}
-                                                             className='col-10'>Cameras and camcorders</Link>
+                                                             className='col-10'>{t('app.header._tablet')}</Link>
                                                              <i class="col-2 fa-solid fa-arrow-right"></i>
                                                          </li>
                                                          <li className='mt-2 row'>
                                                              <Link 
                                                              onClick={handleClose}
-                                                             className='col-10'>Home electronics</Link>
+                                                             className='col-10'>{t('app.header._earphone')}</Link>
                                                              <i class="col-2 fa-solid fa-arrow-right"></i>
                                                          </li>
                                                          <li className='mt-2 row'>
                                                              <Link 
                                                              onClick={handleClose}
-                                                             className='col-10'>Accessories</Link>
+                                                             className='col-10'>{t('app.header._smartwatch')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._watch')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._tivi')}</Link>
                                                              <i class="col-2 fa-solid fa-arrow-right"></i>
                                                          </li>
                                                      </ul>
@@ -225,7 +238,7 @@ const NavMobile = ({open,handleCloseNavMobile}) => {
                                                  <div className="row mt-2">
                                                      <div className="col-10">
                                                          <div className="nav-child-title">
-                                                             Fashion
+                                                            {t('app.header._mobile_accessories')}
                                                          </div>
  
                                                      </div>
@@ -240,25 +253,55 @@ const NavMobile = ({open,handleCloseNavMobile}) => {
                                                          <li className='mt-2 row'>
                                                              <Link 
                                                              onClick={handleClose}
-                                                             className='col-10'>Clothing</Link> 
+                                                             className='col-10'>{t('app.header._powerBank')}</Link> 
                                                              <i class="col-2 fa-solid fa-arrow-right"></i>
                                                          </li>
                                                          <li className='mt-2 row'>
                                                              <Link 
                                                              onClick={handleClose}
-                                                             className='col-10'>Shoes</Link>
+                                                             className='col-10'>{t('app.header._chargerCable')}</Link>
                                                              <i class="col-2 fa-solid fa-arrow-right"></i>
                                                          </li>
                                                          <li className='mt-2 row'>
                                                              <Link 
                                                              onClick={handleClose}
-                                                             className='col-10'>Jewelry and watches</Link>
+                                                             className='col-10'>{t('app.header._hubAdapter')}</Link>
                                                              <i class="col-2 fa-solid fa-arrow-right"></i>
                                                          </li>
                                                          <li className='mt-2 row'>
                                                              <Link 
                                                              onClick={handleClose}
-                                                             className='col-10'>Bags and wallets</Link>
+                                                             className='col-10'>{t('app.header._phoneCase')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._tabletCase')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._screenProtector')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._airPodsCase')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._airTagAccessory')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._phoneStand')}</Link>
                                                              <i class="col-2 fa-solid fa-arrow-right"></i>
                                                          </li>
                                                      </ul>
@@ -268,11 +311,13 @@ const NavMobile = ({open,handleCloseNavMobile}) => {
                                          </li>
                                          <hr />
                                          <li>
-                                             <div className='nav-child'>
+                                             <div 
+                                             onClick={(e)=>{handleNavChildActive(e,'nav-child-AudioDevice')}}
+                                             className='nav-child nav-child-AudioDevice'>
                                                  <div className="row mt-2">
                                                      <div className="col-10">
                                                          <div className="nav-child-title">
-                                                             Home Appliances
+                                                            {t('app.header._audioDevice')}
                                                          </div>
  
                                                      </div>
@@ -281,17 +326,48 @@ const NavMobile = ({open,handleCloseNavMobile}) => {
                                                              <i class="fa-solid fa-angle-right"></i>
                                                          </span>
                                                      </div>
+                                                 </div>
+                                                 <div className="nav-child-2 d-none pt-2">
+                                                     <ul>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._bluetoothEarphones')}</Link> 
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._wiredEarphones')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._speaker')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._microphone')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         
+                                                     </ul>
                                                  </div>
                                              </div>
                                              
                                          </li>
                                          <hr />
                                          <li>
-                                             <div className='nav-child'>
+                                             <div 
+                                             onClick={(e)=>{handleNavChildActive(e,'nav-child-LaptopAccessories')}}
+                                             className='nav-child nav-child-LaptopAccessories'>
                                                  <div className="row mt-2">
                                                      <div className="col-10">
                                                          <div className="nav-child-title">
-                                                             Food and Drinks
+                                                            {t('app.header._laptopAccessories')}
                                                          </div>
  
                                                      </div>
@@ -301,179 +377,74 @@ const NavMobile = ({open,handleCloseNavMobile}) => {
                                                          </span>
                                                      </div>
                                                  </div>
-                                             </div>
-                                             
-                                         </li>
-                                         <hr />
-                                         <li>
-                                             <div className='nav-child'>
-                                                 <div className="row mt-2">
-                                                     <div className="col-10">
-                                                         <div className="nav-child-title">
-                                                             Health and Beauty
-                                                         </div>
- 
-                                                     </div>
-                                                     <div className="col-2">
-                                                         <span className='nav-icon-down'>
-                                                             <i class="fa-solid fa-angle-right"></i>
-                                                         </span>
-                                                     </div>
+                                                 <div className="nav-child-2 d-none pt-2">
+                                                     <ul>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._computerMouse')}</Link> 
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._keyboard')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._networkDevice')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._backpack')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._laptopBag')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._laptopStand')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         <li className='mt-2 row'>
+                                                             <Link 
+                                                             onClick={handleClose}
+                                                             className='col-10'>{t('app.header._software')}</Link>
+                                                             <i class="col-2 fa-solid fa-arrow-right"></i>
+                                                         </li>
+                                                         
+                                                     </ul>
                                                  </div>
                                              </div>
                                              
                                          </li>
                                          <hr />
-                                         <li>
-                                             <div className='nav-child'>
-                                                 <div className="row mt-2">
-                                                     <div className="col-10">
-                                                         <div className="nav-child-title">
-                                                             Toys and Entertainment
-                                                         </div>
- 
-                                                     </div>
-                                                     <div className="col-2">
-                                                         <span className='nav-icon-down'>
-                                                             <i class="fa-solid fa-angle-right"></i>
-                                                         </span>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             
-                                         </li>
-                                         <hr />
-                                         <li>
-                                             <div className='nav-child'>
-                                                 <div className="row mt-2">
-                                                     <div className="col-10">
-                                                         <div className="nav-child-title">
-                                                             Tools and Construction Equipment
-                                                         </div>
- 
-                                                     </div>
-                                                     <div className="col-2">
-                                                         <span className='nav-icon-down'>
-                                                             <i class="fa-solid fa-angle-right"></i>
-                                                         </span>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             
-                                         </li>
-                                         <hr />
-                                         <li>
-                                             <div className='nav-child'>
-                                                 <div className="row mt-2">
-                                                     <div className="col-10">
-                                                         <div className="nav-child-title">
-                                                             Cars, Motorcycles, and Parts
-                                                         </div>
- 
-                                                     </div>
-                                                     <div className="col-2">
-                                                         <span className='nav-icon-down'>
-                                                             <i class="fa-solid fa-angle-right"></i>
-                                                         </span>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             
-                                         </li>
-                                         <hr />
-                                         <li>
-                                             <div className='nav-child'>
-                                                 <div className="row mt-2">
-                                                     <div className="col-10">
-                                                         <div className="nav-child-title">
-                                                             Sports and Outdoors
-                                                         </div>
- 
-                                                     </div>
-                                                     <div className="col-2">
-                                                         <span className='nav-icon-down'>
-                                                             <i class="fa-solid fa-angle-right"></i>
-                                                         </span>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             
-                                         </li>
-                                         <hr />
-                                         <li>
-                                             <div className='nav-child'>
-                                                 <div className="row mt-2">
-                                                     <div className="col-10">
-                                                         <div className="nav-child-title">
-                                                             Office Supplies and Equipment
-                                                         </div>
- 
-                                                     </div>
-                                                     <div className="col-2">
-                                                         <span className='nav-icon-down'>
-                                                             <i class="fa-solid fa-angle-right"></i>
-                                                         </span>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             
-                                         </li>
-                                         <hr />
- 
-                                         <li>
-                                             <div className='nav-child'>
-                                                 <div className="row mt-2">
-                                                     <div className="col-10">
-                                                         <div className="nav-child-title">
-                                                             Pets
-                                                         </div>
- 
-                                                     </div>
-                                                     <div className="col-2">
-                                                         <span className='nav-icon-down'>
-                                                             <i class="fa-solid fa-angle-right"></i>
-                                                         </span>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             
-                                         </li>
-                                         <hr />
-                                         <li>
-                                             <div className='nav-child'>
-                                                 <div className="row mt-2">
-                                                     <div className="col-10">
-                                                         <div className="nav-child-title">
-                                                             Books and Physical Products
-                                                         </div>
- 
-                                                     </div>
-                                                     <div className="col-2">
-                                                         <span className='nav-icon-down'>
-                                                             <i class="fa-solid fa-angle-right"></i>
-                                                         </span>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             
-                                         </li>
-                                         <hr />
+                                         
                                      </ul>
                                  </div>
  
                              </div>
-                             <div 
+                             {/* <div 
                                  onClick={()=>{handleNavParentActive('nav-parent-about')}}
                                  className="nav-parent mt-2">
-                                 <span className='nav-title'>About</span>
+                                 <span className='nav-title'>{t('app.header.About')}</span>
+ 
+                             </div> */}
+                             <div className="nav-parent mt-2">
+                                 <span className='nav-title'>{t('app.header.Contact')}</span>
  
                              </div>
                              <div className="nav-parent mt-2">
-                                 <span className='nav-title'>Contac</span>
- 
-                             </div>
-                             <div className="nav-parent mt-2">
-                                 <span className='nav-title'>Blog</span>
+                                 <span className='nav-title'>{t('app.header.Blog')}</span>
  
                              </div>
                              

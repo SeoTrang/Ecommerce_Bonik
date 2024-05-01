@@ -1,4 +1,5 @@
 const { QueryTypes } = require("sequelize");
+const { Op } = require('sequelize');
 const Combination = require("../Combination/Combination");
 const OptionValue = require("../OptionValue/OptionValue");
 const Variation = require("../Variation/Variation");
@@ -91,6 +92,37 @@ const ProductRepository = {
                       //   attributes: ['id', 'name'], // Chọn các trường bạn muốn lấy từ bảng Brand
                       }
                 ]
+            });
+            if(result) return result;
+            return false;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    },
+
+    search: async (search)=> {
+        try {
+            console.log(search);
+            const result = await Product.findAll({
+                where:{
+                    name: {
+                        [Op.like]: `%${search}%`
+                    }
+                },
+                include: [
+                    {
+                      model: Category,
+                    //   attributes: ['id', 'name'], // Chọn các trường bạn muốn lấy từ bảng Category
+                    },
+                    {
+                      model: Brand,
+                    //   attributes: ['id', 'name'], // Chọn các trường bạn muốn lấy từ bảng Brand
+                    },
+                    {
+                        model: Rating
+                    }
+                ],
             });
             if(result) return result;
             return false;

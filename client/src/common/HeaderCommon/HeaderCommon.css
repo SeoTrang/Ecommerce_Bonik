@@ -13,7 +13,7 @@
 
 
 .header .header-common .logo img{
-    width: 90%;
+    width:60%;
 }
 
 .header .header-common .btn-search-icon i{
@@ -55,7 +55,7 @@
     border:none;
 }
 
-.header .header-common .box-search form{
+.header .header-common .box-search .form-search{
     border: 1px solid #010f1c1a;
     min-height: 45px;
 }

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import SlideProduct from '../../../../components/SlideProduct/SlideProduct';
 import ProductAPI from '../../../../service/NodejsServerAPI/ProductAPI';
+import { useTranslation } from 'react-i18next';
 
 const DealOfTheDay = () => {
+    const {t,i18n} = useTranslation();
     const [products,setProducts] = useState([]);
 
     // api get product home
@@ -23,7 +25,7 @@ const DealOfTheDay = () => {
                             <div className="row align-items-center justify-content-between">
                                 <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 title">
                                     <h1>
-                                        Deal of The Day
+                                    {t('app.content._Deal_of_The_Day')}
                                     </h1>
                                 </div>
                                 <div className="col-xl-5 col-lg-5 d-none d-xl-block d-lg-block line">
@@ -33,7 +35,7 @@ const DealOfTheDay = () => {
                                     <div className="aciton ps-md-5">
                                         <button className='btn btn-md'>
                                             <span className='me-2'>
-                                                View All Deals
+                                            {t('app.content._view_all')}
                                             </span>
                                             <i class="fa-solid fa-arrow-right"></i>
                                         </button>

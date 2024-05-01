@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import CardMd from '../../../../components/Card/CardMd/CardMd';
 import ProductAPI from '../../../../service/NodejsServerAPI/ProductAPI';
+import { useTranslation } from 'react-i18next';
 
 const Electronics = () => {
+    const {t,i18n} = useTranslation();
     const [products,setProducts] = useState([]);
 
     // api get product home
@@ -24,7 +26,7 @@ const Electronics = () => {
                                 <div className="box-menu-top row d-flex align-content-end">
                                     <div className="menu-left col-6">
                                         <div className="title">
-                                            <h3>Electronics <br/> Gadgets</h3>
+                                            <h3>{t('app.content._Electronics_Gadgets')}</h3>
                                         </div>
                                         <div className='line mb-4'></div>
                                         <ul className="list-menu">
@@ -37,7 +39,7 @@ const Electronics = () => {
                                         </ul>
                                         <div className='btn-bottom'>
                                             <Link>
-                                                <span className='me-2'>More Products </span>
+                                                <span className='me-2'>{t('app.content._more_products')}</span>
                                                 <i class="fa-solid fa-arrow-right"></i>
                                             </Link>
                                         </div>

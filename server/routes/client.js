@@ -11,6 +11,7 @@ const userController = require('../controllers/userController');
 const CartController = require('../controllers/CartController');
 const OptionController = require('../controllers/optionController');
 const orderController = require('../controllers/orderController');
+const FavoriteController = require('../controllers/favoriteController');
 
 // category
 router.get('/category',categoryController.getCategory);
@@ -23,7 +24,13 @@ router.get('/product',productController.getAll);
 router.get('/product/:id',productController.getOne);
 router.get('/product-detail/:id',productController.getDetail);
 router.get('/get-product-by-nane/:Name',productController.getByName);
+router.get('/product-search/search',productController.search);
 
+
+// favorite products
+router.post('/favorite/:product_id',authMiddleware.checkLogin, FavoriteController.create )
+router.delete('/favorite/:product_id',authMiddleware.checkLogin, FavoriteController.delete )
+router.get('/favorite',authMiddleware.checkLogin, FavoriteController.getAllByUser )
 // list imgs
 router.get('/list-img',listImgController.getAll);
 router.get('/get-list-img/:variantion_id',listImgController.getByVariantion);

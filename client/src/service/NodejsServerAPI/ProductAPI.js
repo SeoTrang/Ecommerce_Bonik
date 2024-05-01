@@ -18,6 +18,24 @@ const ProductAPI = {
             return false;
         }
     },
+    search: async (search) => {
+        try {
+            let result = null;
+            await axiosCustom.get('/product-search/search?search=' + search)
+            .then(res=>{
+                console.log(res.data);
+                result = res.data;
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+            return result;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    }
+    ,
     GetDetail: async (product_id,linkTo) => {
         try {
             if(!product_id) return false;

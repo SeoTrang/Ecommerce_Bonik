@@ -68,7 +68,112 @@
             "Product":"Sản phẩm",
             "Blog":"Bài viết",
             "Contact":"Liên hệ",
-            "My Profile":"Trang cá nhân"
+            "My Profile":"Trang cá nhân",
+
+            "_mobilePhone":"Điện thoại",
+            "_laptop":"Laptop",
+            "_tablet":"Máy tính bảng",
+            "_earphone":"Tai nghe",
+            "_smartwatch":"Đồng hồ thông minh",
+            "_watch":"Đồng hồ",
+            "_tivi":"Tivi",
+
+            "_mobile_accessories": "Phụ kiện di động",
+            "_powerBank": "Sạc dự phòng",
+            "_chargerCable": "Sạc, cáp",
+            "_hubAdapter": "Hub, cáp chuyển đổi",
+            "_phoneCase": "Ốp lưng điện thoại",
+            "_tabletCase": "Ốp lưng máy tính bảng",
+            "_screenProtector": "Miếng dán màn hình",
+            "_airPodsCase": "Túi đựng AirPods",
+            "_airTagAccessory": "AirTag, Vỏ bảo vệ AirTag",
+            "_phoneStand": "Giá đỡ điện thoại",
+
+            "_audioDevice": "Thiết bị âm thanh",
+          "_bluetoothEarphones": "Tai nghe Bluetooth",
+          "_wiredEarphones": "Tai nghe dây",
+          "_speaker": "Loa",
+          "_microphone": "Micro",
+
+          "_laptopAccessories": "Phụ kiện laptop",
+          "_computerMouse": "Chuột máy tính",
+          "_keyboard": "Bàn phím",
+          "_networkDevice": "Thiết bị mạng",
+          "_backpack": "Balo",
+          "_laptopBag": "Túi chống sốc",
+          "_laptopStand": "Giá đỡ laptop",
+          "_software": "Phần mềm",
+
+          "_smartHomeDevice": "Thiết bị nhà thông minh",
+          "_indoorCamera": "Camera trong nhà",
+          "_outdoorCamera": "Camera ngoài trời",
+          "_projector": "Máy chiếu",
+          "_storageDevice": "Thiết bị lưu trữ",
+          "_portableHardDrive": "Ổ cứng di động",
+          "_memoryCard": "Thẻ nhớ",
+          "_usbDrive": "USB",
+          "_otherAccessories": "Phụ kiện khác",
+          "_buttonCellBattery": "Pin tiểu",
+          "_gameController": "Tay cầm chơi game",
+          "_carAccessories": "Phụ kiện ô tô"
+
+          
+          
+
+        },
+        "content":{
+            "_earphone":"Tai nghe",
+            "_mobilePhone":"Điện thoại",
+            "_cpu":"CPU",
+            "_smartwatch":"Smart Watch",
+            "_bluetooth":"Bluetooth",
+            "_Free_Delivery":"Miễn phí giao hàng",
+            "_Orders_from_all_item": "Tất cả các mặt hàng",
+            "_Return&_Refund": "Trả hàng & Hoàn tiền",
+            "_If_a_problem_occurs":"Nếu phát sinh sự cố",
+            "_Member_Discount": "Giảm giá thành viên",
+            "_Onevery_order_over_500k": "Đơn hàng trên 500k",
+            "_Support_24/7": "Hỗ trợ 24/7",
+            "_contact_now": "Liên hệ ngay",
+            "_trending_products":"Thịnh hành",
+            "_Deal_of_The_Day":"Ưu đãi hàng ngày",
+              "_view_all":"Xem tất cả",
+              "_Electronics_Gadgets":"Thiết bị điện tử",
+              "_more_products":"Xem thêm",
+              "_shop_now":"Mua ngay",
+              "_New_Arrivals":"Sản phẩm mới",
+              "_Latest_news_articles":"Tin tức & bài viết mới nhất",
+              "_view_all_blogs":"Xem tất cả bài viết",
+              "_read_more":"Đọc thêm",
+              "_enter_your_email":"Nhập email của bạn",
+              "_subscribe":"Đăng ký"
+        },
+        "footer":{
+            "_slogan":"Mua sắm trực tuyến - làm cho mọi thứ trở nên dễ dàng hơn bao giờ hết.",
+            "_My_Account": "Tài khoản của tôi",
+            "_Track_Orders": "Theo dõi đơn hàng",
+            "_Shipping": "Vận chuyển",
+            "_Wishlist": "Danh sách mong muốn",
+            "_My_Account": "Tài khoản của tôi",
+            "_Order_History": "Lịch sử đơn hàng",
+            "_Returns": "Trả hàng",
+            "_Infomation": "Thông tin",
+            "_Our_Story": "Câu chuyện của chúng tôi",
+            "_Careers": "Cơ hội nghề nghiệp",
+            "_Privacy_Policy": "Chính sách bảo mật",
+            "_Terms_&_Conditions": "Điều khoản & Điều kiện",
+            "_Latest_News": "Tin tức mới nhất",
+            "_Contact_Us": "Liên hệ với chúng tôi",
+            "_Talk_To_Us": "Nói chuyện với chúng tôi",
+            "_Got_Questions?_Call_us": "Có câu hỏi? Gọi cho chúng tôi"
+
+
+        },
+        "common":{
+            "_color":"Màu",
+            "_Quantity":"Số lượng",
+            "_add_to_cart":"Thêm giỏ hàng",
+            "_buy_now":"Mua ngay"
         }
     }
 }

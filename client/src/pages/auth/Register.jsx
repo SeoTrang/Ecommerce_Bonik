@@ -49,7 +49,7 @@ const Register = () => {
 
                         <div className="title-top text-center">
                             <h2>
-                                Sign Up Shofy.
+                                Sign Up Bonik.
                             </h2>
                             <div className="action-to-register mt-2">
                                 <span>

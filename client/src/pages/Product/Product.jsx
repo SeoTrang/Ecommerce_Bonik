@@ -4,7 +4,7 @@ import 'rc-slider/assets/index.css';
 import Slider from 'rc-slider';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 
 import CardMd from '../../components/Card/CardMd/CardMd';
@@ -15,18 +15,27 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 
 const Product = () => {
-    
+    const productSearch = new URLSearchParams(useLocation().search)?.get('search') ?? '';
+    console.log(productSearch);
 
     // product
     
     const [products,setProducts] = useState();
 
     useEffect(()=>{
-        let productTemp = ProductAPI.GetAll();
-        productTemp
-        .then(data => setProducts(data))
-        .catch(err => console.log(err))
-    },[])
+        
+        if(!productSearch){
+            let productTemp = ProductAPI.GetAll();
+            productTemp
+            .then(data => setProducts(data))
+            .catch(err => console.log(err))
+        }else{
+            let productTemp = ProductAPI.search(productSearch);
+            productTemp
+            .then(data => setProducts(data))
+            .catch(err => console.log(err))
+        }
+    },[productSearch])
 
     useEffect(()=>{
         console.log(products);

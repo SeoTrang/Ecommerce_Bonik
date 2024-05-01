@@ -31,6 +31,7 @@ router.delete('/brand/:id',brandController.delete);
 
 // product
 router.post('/product',productController.postProduct);
+router.get('/product/:id',productController.getOne);
 router.put('/product/:id',productController.putProduct);
 router.get('/product',productController.getAll);
 // router.get('/one-product/:id',productController.getOne);
@@ -86,5 +87,5 @@ router.post('/combination',CombinationController.create);
 
 // order
 router.get('/all-orders',orderController.getAll);
-
+router.get('/get-order-detail/:id',orderController.getOneById);
 module.exports = router;

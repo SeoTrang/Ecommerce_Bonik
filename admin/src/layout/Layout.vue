@@ -14,7 +14,7 @@
             <div class="side-bar side-bar-modal">
                 <div class="logo-top">
                     <div class="img">
-                        <img src="./logo.svg" alt="">
+                        <img src="./logo_bonik.svg" alt="">
                     </div>
                 </div>
 
@@ -319,7 +319,7 @@
             <div class="side-bar">
                 <div class="logo-top">
                     <div class="img" @click="handleTangTest">
-                        <img src="./logo.svg" alt="">
+                        <img src="./logo_bonik.svg" alt="">
                     </div>
                 </div>
 

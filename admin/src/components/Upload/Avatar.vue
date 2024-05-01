@@ -5,7 +5,7 @@
     name="photo"
     list-type="picture-card"
     class="avatar-uploader"
-    action="http://localhost:5000/file/single"
+    action="http://localhost:8080/file/single"
     :show-upload-list="false"
     @change="handleChange"
     :style="{ minHeight: props ? props?.height : ''}"
@@ -24,7 +24,7 @@
   </div>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { message } from 'ant-design-vue';
 import { defineProps } from 'vue';
 
@@ -39,6 +39,10 @@ const props = defineProps({
   imageUrl: String,
 });
 
+watch(() => props.imageUrl,(newVal,oldVal) =>{
+  console.log(newVal);
+  imageUrl.value = API_URL+props.imageUrl;
+})
 if(props?.imageUrl){
   imageUrl.value = API_URL+props.imageUrl;
   console.log(imageUrl.value);

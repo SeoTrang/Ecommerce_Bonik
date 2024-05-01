@@ -7,7 +7,7 @@
       class="avatar-uploader"
       :show-upload-list="false"
       @change="handleChange"
-      action="http://localhost:5000/file/single"
+      action="http://localhost:8080/file/single"
       :style="{ minHeight: props ? props?.height : ''}"
       multiple
     >

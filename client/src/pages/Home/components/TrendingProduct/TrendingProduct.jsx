@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import CardMd from '../../../../components/Card/CardMd/CardMd';
 import ProductAPI from '../../../../service/NodejsServerAPI/ProductAPI';
+import { useTranslation } from 'react-i18next';
 
 const TrendingProduct = () => {
+    const {t,i18n} = useTranslation();
     const [trendingProduct,setTrendingProduct] = useState([]);
 
     // api get product home
@@ -23,13 +25,13 @@ const TrendingProduct = () => {
                     <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 title">
                         <h1>
                             {/* Trending Products */}
-                            Thịnh hành
+                            {t('app.content._trending_products')}
                         </h1>
                     </div>
-                    <div className="col-xl-4 col-lg-4 d-none d-xl-block d-lg-block line">
+                    <div className="col-xl-8 col-lg-8 d-xl-block d-lg-block line">
                         <hr />
                     </div>
-                    <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 action">
+                    {/* <div className="col-xl-4 col-lg-4 col-md-6 col-sm-12 action">
                         <div className="list-acitons d-flex align-items-center ps-md-5">
                             <div className="action me-5 action-active">
                                 New
@@ -41,7 +43,7 @@ const TrendingProduct = () => {
                                 Top Sellers
                             </div>
                         </div>  
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="box-product mt-2">

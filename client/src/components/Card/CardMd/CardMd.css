@@ -10,6 +10,12 @@
 
 }
 
+@media screen and (max-width: 768px) {
+    .cardMd{
+        padding-bottom: 20px;
+    }
+}
+
 
 .cardMd .des .name{
     /* height: 40px; */

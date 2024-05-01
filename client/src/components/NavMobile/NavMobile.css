@@ -10,7 +10,7 @@
     padding: 15px;
     overflow-y: scroll;
 }
-
+/* http://localhost:5174/detail?id=1 */
 .nav-mobile{
     /* max-height: 40vh; */
     overflow-y: scroll;
