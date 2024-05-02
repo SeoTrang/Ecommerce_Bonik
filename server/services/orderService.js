@@ -12,6 +12,9 @@ const OrderService = {
     },
     getAll: async() => {
         return await OrderRepository.getAll();
+    },
+    updateOrderStatus: async(order_id,status) => {
+        return await OrderRepository.updateOrderStatus(order_id,status);
     }
 }
 

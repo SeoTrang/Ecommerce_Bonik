@@ -79,7 +79,8 @@ export default function SlideFade() {
                                 </div>
                                 <div className="col-xl-7 col-lg-6 col-md-6 ">
                                     <div className="text-end">
-                                        <img className={slideActive == 0 ? (' my-animation-fade-up my-animation-dl-09') : "d-none"} src="https://shofy-angular.vercel.app/assets/img/slider/slider-img-1.png" alt="" />
+                                        {/* slider-img-1.png */}
+                                        <img className={slideActive == 0 ? (' my-animation-fade-up my-animation-dl-09') : "d-none"} src={import.meta.env.VITE_API_URL+"/img/imgBaner/slider-img-3.png"} alt="" />
                                     </div>
                                 </div>
 
@@ -128,7 +129,7 @@ export default function SlideFade() {
                                 </div>
                                 <div className="col-12 col-xl-7 col-lg-6 col-md-6">
                                     <div className="text-end">
-                                        <img className={slideActive == 1 ? (' my-animation-fade-up my-animation-dl-09') : "d-none"} src="https://shofy-angular.vercel.app/assets/img/slider/slider-img-2.png" alt="" />
+                                        <img className={slideActive == 1 ? (' my-animation-fade-up my-animation-dl-09') : "d-none"} src={import.meta.env.VITE_API_URL+"/img/imgBaner/slider-img-2.png"} alt="" />
                                     </div>
                                 </div>
 
@@ -179,7 +180,7 @@ export default function SlideFade() {
                                 </div>
                                 <div className="col-xl-7 col-lg-6 col-md-6 ">
                                     <div className="text-end">
-                                        <img className={slideActive == 2 ? (' my-animation-fade-up my-animation-dl-09') : "d-none"} src="https://shofy-angular.vercel.app/assets/img/slider/slider-img-3.png" alt="" />
+                                        <img className={slideActive == 2 ? (' my-animation-fade-up my-animation-dl-09') : "d-none"} src={import.meta.env.VITE_API_URL+"/img/imgBaner/slider-img-1.png"} alt="" />
                                     </div>
                                 </div>
 

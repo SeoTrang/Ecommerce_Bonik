@@ -81,6 +81,23 @@ const orderController = {
             console.log(error);
             return res.status(500).json({error: error});
         }
+    },
+
+    updateOrderStatus: async (req,res) => {
+        try {
+            const order_id = req.params.order_id;
+            const status = req.body.data.status;
+            if(!order_id || status == null) {
+                return res.status(400).json('missing data');
+            }
+
+            const result = await OrderService.updateOrderStatus(order_id, status);
+            if(result) return res.status(200).json('success');
+            throw new Error('update order status failed')
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({error: error});
+        }
     }
 }
 

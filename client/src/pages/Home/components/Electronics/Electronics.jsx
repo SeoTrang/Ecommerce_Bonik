@@ -47,7 +47,7 @@ const Electronics = () => {
                                     </div>
 
                                     <div className="img-right col-6 d-flex align-content-end justify-content-end">
-                                        <img src="https://shofy-angular.vercel.app/assets/img/product/gadget/gadget-girl.png" alt="" />
+                                        <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/gadget-girl.png"} alt="" />
                                     </div>
                                 </div>
                                 <div className="banner-bottom row mt-3">

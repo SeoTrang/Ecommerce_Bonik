@@ -61,9 +61,9 @@ export default function SlideBanner2() {
                         </div>
                         <div className="col-12 col-xl-6 col-lg-6 content-right">
                             <div className="img">
-                                <img src="https://shofy-angular.vercel.app/assets/img/banner/banner-slider-1.png" alt="" />
+                                <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/banner-slider-1.png"} alt="" />
                                 <div className="img-absolute">
-                                    <img src="https://shofy-angular.vercel.app/assets/img/banner/banner-slider-offer.png" alt="" />
+                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/banner-slider-offer.png"} alt="" />
                                 </div>
                             </div>
                             
@@ -104,9 +104,9 @@ export default function SlideBanner2() {
                         </div>
                         <div className="col-12 col-xl-6 col-lg-6 content-right">
                             <div className="img">
-                                <img src="https://shofy-angular.vercel.app/assets/img/banner/banner-slider-2.png" alt="" />
+                                <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/banner-slider-2.png"} alt="" />
                                 <div className="img-absolute">
-                                    <img src="https://shofy-angular.vercel.app/assets/img/banner/banner-slider-offer.png" alt="" />
+                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/banner-slider-offer.png"} alt="" />
                                 </div>
                             </div>
                             
@@ -148,9 +148,9 @@ export default function SlideBanner2() {
                         </div>
                         <div className="col-12 col-xl-6 col-lg-6 content-right">
                             <div className="img">
-                                <img src="https://i.ibb.co/jvGv6qf/mobile-1.png" alt="" />
+                                <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/mobile-1.png"} alt="" />
                                 <div className="img-absolute">
-                                    <img src="https://shofy-angular.vercel.app/assets/img/banner/banner-slider-offer.png" alt="" />
+                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/banner-slider-offer.png"} alt="" />
                                 </div>
                             </div>
                             

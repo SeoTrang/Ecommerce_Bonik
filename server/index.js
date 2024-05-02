@@ -10,7 +10,6 @@ var morgan = require('morgan')
 // create "middleware"
 // var logger = morgan('combined')
 app.use(morgan('dev'));
-
 const db = require('./config/db');
 const route = require('./routes/index.js');
 

@@ -59,6 +59,6 @@ router.get('/option/:product_id',OptionController.getByProduct);
 router.post('/add-new-order',authMiddleware.checkLogin,orderController.create);
 router.get('/get-order',authMiddleware.checkLogin,orderController.getAllByUser);
 router.get('/get-order-detail/:id',authMiddleware.checkLogin,orderController.getOneById);
-
+router.put('/update-order-status/:order_id',authMiddleware.checkLogin,orderController.updateOrderStatus);
 
 module.exports = router;

@@ -80,7 +80,7 @@ const Home = () => {
                         <div className="col mb-5">
                             <Link className='cate-product text-center'>
                                 <div className="img">
-                                    <img src="https://i.ibb.co/sVxYFDY/product-cat-1.png" alt="" />
+                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/product-cat-1.png"} alt="" />
                                 </div>
                                 <div className="title mt-3">
                                     
@@ -96,7 +96,7 @@ const Home = () => {
                         <div className="col mb-5">
                             <Link className='cate-product text-center'>
                                 <div className="img">
-                                    <img src="https://i.ibb.co/xHFpQTV/product-cat-2.png" alt="" />
+                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/product-cat-2.png"} alt="" />
                                 </div>
               
                                 <div className="title mt-3">
@@ -110,7 +110,7 @@ const Home = () => {
                         <div className="col mb-5">
                             <Link className='cate-product text-center'>
                                 <div className="img">
-                                    <img src="https://i.ibb.co/S0GjZdp/product-cat-3.png" alt="" />
+                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/product-cat-3.png"} alt="" />
                                 </div>
               
                                 <div className="title mt-3">
@@ -124,7 +124,7 @@ const Home = () => {
                         <div className="col mb-5">
                             <Link className='cate-product text-center'>
                                 <div className="img">
-                                    <img src="https://i.ibb.co/g3YK8H2/product-cat-4.png" alt="" />
+                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/product-cat-4.png"} alt="" />
                                 </div>
               
                                 <div className="title mt-3">
@@ -138,7 +138,7 @@ const Home = () => {
                         <div className="col mb-5">
                             <Link className='cate-product text-center'>
                                 <div className="img">
-                                    <img src="https://i.ibb.co/D9qfYWX/product-cat-5.png" alt="" />
+                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/product-cat-5.png"} alt="" />
                                 </div>
               
                                 <div className="title mt-3">
@@ -339,7 +339,7 @@ const Home = () => {
                                         <div className="row">
                                             <div className="col-12">
                                                 <div className="img">
-                                                    <img src="https://shofy-angular.vercel.app/assets/img/blog/blog-1.jpg" alt="" />
+                                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBlog/blog-1.jpg"} alt="" />
                                                 </div>
                                                 <h5 className="title mt-4">
                                                     The Modern Art Clay Ceramics.
@@ -373,7 +373,7 @@ const Home = () => {
                                         <div className="row">
                                             <div className="col-12">
                                                 <div className="img">
-                                                    <img src="https://shofy-angular.vercel.app/assets/img/blog/blog-2.jpg" alt="" />
+                                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBlog/blog-2.jpg"} alt="" />
                                                 </div>
                                                 <h5 className="title mt-4">
                                                     How clothes are linked to climate
@@ -407,7 +407,7 @@ const Home = () => {
                                         <div className="row">
                                             <div className="col-12">
                                                 <div className="img">
-                                                    <img src="https://shofy-angular.vercel.app/assets/img/blog/blog-3.jpg" alt="" />
+                                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBlog/blog-3.jpg"} alt="" />
                                                 </div>
                                                 <h5 className="title mt-4">
                                                     The Sound Of Fashion: Malcolm
@@ -441,7 +441,7 @@ const Home = () => {
                                         <div className="row">
                                             <div className="col-12">
                                                 <div className="img">
-                                                    <img src="https://shofy-angular.vercel.app/assets/img/blog/blog-1.jpg" alt="" />
+                                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBlog/blog-1.jpg"} alt="" />
                                                 </div>
                                                 <h5 className="title mt-4">
                                                     The Modern Art Clay Ceramics.
@@ -475,7 +475,7 @@ const Home = () => {
                                         <div className="row">
                                             <div className="col-12">
                                                 <div className="img">
-                                                    <img src="https://shofy-angular.vercel.app/assets/img/blog/blog-2.jpg" alt="" />
+                                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBlog/blog-2.jpg"} alt="" />
                                                 </div>
                                                 <h5 className="title mt-4">
                                                     How clothes are linked to climate
@@ -509,7 +509,7 @@ const Home = () => {
                                         <div className="row">
                                             <div className="col-12">
                                                 <div className="img">
-                                                    <img src="https://shofy-angular.vercel.app/assets/img/blog/blog-3.jpg" alt="" />
+                                                    <img src={import.meta.env.VITE_API_URL+"/img/imgBlog/blog-3.jpg"} alt="" />
                                                 </div>
                                                 <h5 className="title mt-4">
                                                     The Sound Of Fashion: Malcolm
@@ -546,10 +546,10 @@ const Home = () => {
                 <section className='subscribe mt-5'>
                     <div className="shape d-flex align-content-start justify-content-between">
                         <div className="img-left">
-                            <img src="https://shofy-angular.vercel.app/assets/img/subscribe/subscribe-shape-1.png" alt="" />
+                            <img src={import.meta.env.VITE_API_URL+"/img/imgBaner/subscribe-shape-1.png"} alt="" />
                         </div>
                         <div className="img-right me-5">
-                            <img className='me-5' src="https://shofy-angular.vercel.app/assets/img/subscribe/subscribe-shape-4.png" alt="" />
+                            <img className='me-5' src={import.meta.env.VITE_API_URL+"/img/imgBaner/subscribe-shape-4.png"} alt="" />
                         </div>
                     </div>
                     <div className="container pt-70 pb-65">

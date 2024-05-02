@@ -88,4 +88,5 @@ router.post('/combination',CombinationController.create);
 // order
 router.get('/all-orders',orderController.getAll);
 router.get('/get-order-detail/:id',orderController.getOneById);
+router.put('/update-order-status/:order_id',orderController.updateOrderStatus);
 module.exports = router;

@@ -51,6 +51,28 @@ const OrderRepository = {
             console.log(error);
             return false;
         }
+    },
+
+    updateOrderStatus: async(order_id,status)=> {
+        try {
+            const data = {
+                state: status
+            }
+            const [updated] = await Order.update(data,{
+                where: {
+                    id: order_id
+                }
+            })
+            if (updated === 1) {
+                return true;
+            } else {
+                console.error('Không tìm thấy lỗi khi cập nhật.');
+                throw new Error('Không tìm thấy lỗi khi cập nhật.');
+            }
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
     }
 }
 

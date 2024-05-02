@@ -97,6 +97,48 @@ const AuthController = {
             return res.status(500).json('server error');
         }
     },
+    adminLogin: async (req, res) => {
+        try {
+            const data = req.body.data;
+            console.log(data);
+
+            const user = await UserService.findByEmail(data.email);
+            console.log(user);
+            if(!user) {
+                return res.status(404).json("not found");
+            }
+            if(user?.role !== 1){
+                return res.status(403).json('Khong co quyen truy cap!');
+            }
+            if(!await bcrypt.compare(data.pass,user.pass)) return res.status(404).json('username or pass invalid');
+            let accessToken;
+            let refreshToken;
+            if (user) {
+                // return res.json(user);
+                // console.log(user);
+                accessToken = await generateAccesstoken(user);
+                refreshToken = await generateRefreshtoken(user);
+
+            // console.log("accessToken : ",accessToken);
+            // console.log("refreshToken : ",refreshToken);
+            }
+            if(refreshToken && accessToken){
+                const data = {
+                    RefreshToken: refreshToken,
+                    userId: user.id
+                }
+                const resultAddRefreshToken = RefreshTokenService.create(data);
+                if(resultAddRefreshToken) return res.status(200).json({
+                    refreshToken:refreshToken,
+                    accessToken:accessToken
+                })
+            }
+            return res.status(500).json('server error');
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json('server error');
+        }
+    },
     logout: async (req,res) => {
         try {
             const refreshToken = req.headers.authorization.split(' ')[1];

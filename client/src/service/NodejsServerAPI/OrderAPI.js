@@ -52,6 +52,21 @@ const OrderAPI = {
             console.log(error);
             return false;
         }
+    },
+    updateOrderStatus: async (order_id, status) => {
+        try {
+            let result = null;
+            await axiosCustom.put('/update-order-status/'+order_id,{data: {status: status}})
+            .then(res => result = res.data)
+            .catch(err => {
+                throw new Error('Error update status order')
+            }) 
+            if(result) return result;
+            return null;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
     }
 }
 

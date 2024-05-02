@@ -10,6 +10,14 @@ const VITE_API_URL = import.meta.env.VITE_API_URL;
 const orderId = ref("");
 const route = useRoute();
 let order = ref(null);
+const dialog = ref(false);
+
+async function getProduct() {
+  let product = await OrderAPI.getByOrderId(orderId.value);
+  order.value = product;
+}
+
+
 
 onMounted(() => {
   orderId.value = route.params.order_id;
@@ -24,6 +32,38 @@ onMounted(() => {
       .catch((err) => console.log(err));
   }
 });
+
+
+
+const updateOrderToShiping = async () => {
+  let result = await OrderAPI.updateOrderStatus(orderId.value,2);
+
+  if(result) {
+    getProduct();
+    return toast.success('Cập nhật đơn hàng thành công!');
+  }
+}
+// const updateOrderToSuccess = async () => await OrderAPI.updateOrderStatus(orderId.value,3);
+const updateOrderToCanceled = async () => {
+  let result = await OrderAPI.updateOrderStatus(orderId.value,0);
+  if(result) {
+    getProduct();
+    return toast.success('Cập nhật đơn hàng thành công!');
+  }
+}
+
+const handleOpenDialog = () => {
+  return dialog.value = true;
+}
+const handleCloseDialog = () => {
+  return dialog.value = false;
+
+}
+
+const handleOkCanceledOrder = () => {
+  updateOrderToCanceled();
+  handleCloseDialog();
+}
 </script>
 <style>
     @import './OrderDetail.css';
@@ -177,15 +217,17 @@ onMounted(() => {
                   <div class="">
                     <template v-if="order.state == 1">
                         <div
-                      class="btn btn-md w-100 btn-cancel"
-                    >
-                      Hủy
-                    </div>
-                    <div
-                      class="btn btn-md w-100 btn-confirm mt-3"
-                    >
-                      Xác nhận
-                    </div>
+                          class="btn btn-md w-100 btn-cancel"
+                          @click="handleOpenDialog()"
+                        >
+                          Hủy
+                        </div>
+                        <div
+                          class="btn btn-md w-100 btn-confirm mt-3"
+                          @click="updateOrderToShiping()"
+                        >
+                          Xác nhận
+                        </div>
                     </template>
                     
                   </div>
@@ -199,4 +241,37 @@ onMounted(() => {
       </div>
     </div>
   </div>
+
+  <v-dialog
+      v-model="dialog"
+      persistent
+      max-width="290"
+    >
+      
+      <v-card>
+        <v-card-title class="text-h5">
+          Thông báo ⚠️
+        </v-card-title>
+        <v-card-text>
+          Bạn chắc chắn muốn hủy đơn hàng?
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="green darken-1"
+            text
+            @click="handleCloseDialog()"
+          >
+            Không
+          </v-btn>
+          <v-btn
+            color="green darken-1"
+            text
+            @click="handleOkCanceledOrder()"
+          >
+            Có
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
 </template>

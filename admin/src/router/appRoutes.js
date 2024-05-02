@@ -10,10 +10,12 @@ import AddProduct2 from '../pages/Product/AddProduct2/AddProduct2.vue';
 import Order from '../pages/Order/Order.vue';
 import OrderDetail from '../pages/Order/OrderDetail/OrderDetail.vue';
 import UpdateProduct from '../pages/Product/UpdateProduct/UpdateProduct.vue';
+
 const appRoutes = [
     {
       path: '',
       component: Layout,
+      meta: { requiresAuth: true },
       children: [
         {
           path: '',
@@ -50,7 +52,8 @@ const appRoutes = [
         {
           path: '/order-detail/:order_id',
           component: OrderDetail
-        }
+        },
+     
       ]
     },
     {

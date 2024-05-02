@@ -44,8 +44,9 @@ const Order = sequelize.define('orders',{
     },
     state:{
         type: DataTypes.INTEGER,
-        defaultValue: 1
+        defaultValue: 1 // 1: pending, 2: shiping, 3: success, 0: canceled,
     },
+
     note:{
         type: DataTypes.TEXT,
         allowNull: true

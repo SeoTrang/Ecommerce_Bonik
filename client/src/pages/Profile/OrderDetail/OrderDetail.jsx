@@ -5,12 +5,33 @@ import { Link, useParams, useSearchParams } from 'react-router-dom';
 import OrderAPI from '../../../service/NodejsServerAPI/OrderAPI';
 import formatDate from '../../../../util/formatDate';
 import formatCurrencyVND from '../../../../util/formatCurrencyVND';
+import toast from 'react-hot-toast';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 const OrderDetail = () => {
 
     const [order,setOrder] = useState();
     const [searchParams] = useSearchParams();
     const id = searchParams.get('id');
+    const [openDialog, setOpenDialog] = useState(false);
 
+    const handleClickOpenDialog = () => {
+        setOpenDialog(true);
+    };
+
+    const handleCloseDialog = () => {
+        setOpenDialog(false);
+    };
+    
+    async function getProduct() {
+        let product = await OrderAPI.getOrderDetail(id);
+        setOrder(product)
+    }
 
     useEffect(()=>{
         // console.log(id);
@@ -23,6 +44,23 @@ const OrderDetail = () => {
     useEffect(()=>{
         console.log(order);
     },[order])
+
+
+    const handleOkCanceledOrder = () =>{
+        setOpenDialog(false);
+        return updateOrderToCanceled()
+    }
+    const updateOrderToCanceled = async () => {
+
+        if(order.state != 1){
+            return toast.error('Đơn hàng không được cập nhật!')
+        }
+        let result = await OrderAPI.updateOrderStatus(id,0);
+        if(result) {
+          getProduct();
+          return toast.success('Cập nhật đơn hàng thành công!');
+        }
+    }
 
     return (
         <div className='order-detail mb-5 shofy-app'>
@@ -269,7 +307,7 @@ const OrderDetail = () => {
                                 </div>
                                 <div className="action mt-3">
                                     <div className="d-flex">
-                                        <div className={'btn btn-md w-100 btn-cancel ' + (order&&order.state === 1 ? '': 'disabled') }>
+                                        <div onClick={handleClickOpenDialog} className={'btn btn-md w-100 btn-cancel ' + (order&&order.state === 1 ? '': 'disabled') }>
                                             Hủy
                                         </div>
                                     </div>
@@ -280,6 +318,28 @@ const OrderDetail = () => {
                     </div>
                 </div>
             </div>
+
+            <Dialog
+        open={openDialog}
+        onClose={handleCloseDialog}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {"Thông báo ⚠️"}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Bạn chắc chắn muốn hủy đơn hàng?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog}>Không</Button>
+          <Button onClick={handleOkCanceledOrder} autoFocus>
+            Có
+          </Button>
+        </DialogActions>
+      </Dialog>
         </div>
     );
 };
