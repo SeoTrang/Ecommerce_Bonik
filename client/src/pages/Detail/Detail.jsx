@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Link, useLocation} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -19,6 +19,7 @@ import { addToCart, fetchCartData } from '../../redux/actions/cartAction';
 const Detail = () => {
 
     const search = useLocation().search;
+    const navigate = useNavigate();
     const productId = new URLSearchParams(search).get('id');
     // const [productId,setProductId] = useState();
     console.log(productId);
@@ -185,6 +186,11 @@ const Detail = () => {
         dispatch(fetchCartData());
         console.log(result);
         if(result) return toast.success('Đã thêm vào giỏ hàng');
+    }
+
+    const handleBuyNow = () => {
+        console.log(variantion[0].variation_id);
+        return navigate('/checkout?variantion=' + variantion[0].variation_id+'&quantity=' + quantity)
     }
     
 
@@ -373,12 +379,12 @@ const Detail = () => {
                                         <div className="add-to-cart ms-3"
                                             onClick={handleAddToCart}
                                             >
-                                            <button >Add To Cart</button>
+                                            <button >Thêm giỏ hàng</button>
                                             
                                         </div>
                                     </div>
                                     <div className="action-bottom mt-3">
-                                        <button>Buy Now</button>
+                                        <button onClick={handleBuyNow}>Mua ngay</button>
                                     </div>
                                         
                                     <div className="more-info mt-3 mb-4">

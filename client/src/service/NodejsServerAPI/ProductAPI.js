@@ -95,6 +95,24 @@ const ProductAPI = {
             console.log(error);
             return false;
         }
+    },
+
+    getByVariationId: async (variationId) => {
+        try {
+            let result = null;
+            await axiosCustom.get('/get-variation/'+variationId)
+            .then((response) => {
+                result = response.data;
+            })
+            .catch((error) => {
+                result = false;
+            })
+
+            if(result) return result;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
     }
 }
 

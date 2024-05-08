@@ -305,10 +305,10 @@
 
                                 <div class="user-header">
                                     <div class="user-name me-2 d-none d-md-block">
-                                        John Doe
+                                        {{ user?.user_name }}
                                     </div>
                                     <div class="avatar">
-                                        <img src="./avatar.jpg" alt="">
+                                        <img :src="VITE_API_URL+user?.avatar" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -565,17 +565,19 @@
     </div>
 </template>
 <script >
-  import { ref } from 'vue';
+  import { ref, onMounted  } from 'vue';
+  import UserAPI  from '../services/NodeAPI/UserAPI.js';
   export default{
     
     setup(){
+        const VITE_API_URL = import.meta.env.VITE_API_URL;
         let test = 1;
         const handleTangTest = () => {
              test++;
              return console.log(test);
         }
         const panel = [0,1,2];
-        
+        const user = ref();
         const open = ref(false);
         const size = ref('default');
         const showDrawer = val => {
@@ -601,6 +603,17 @@
             console.log(panel);
         };
 
+
+        onMounted(() => {
+            async function getProfile() {
+                let result = await UserAPI.getProfile();
+                console.log(result);
+                if(result) user.value = result;
+            }
+
+            getProfile();
+        })
+
         return {
             panel,
             handleShow,
@@ -608,7 +621,9 @@
             size,
             onClose,
             showDrawer,
-            handleTangTest
+            handleTangTest,
+            user,
+            VITE_API_URL
         }
     }
   }

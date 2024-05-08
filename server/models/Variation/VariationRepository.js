@@ -1,3 +1,4 @@
+const Product = require("../product/product");
 const Variation = require("./Variation");
 
 const VariationRepository = {
@@ -23,6 +24,25 @@ const VariationRepository = {
 
             if(result) return result;
             return false;
+        } catch (error) {
+            console.log(error);
+            return false;
+        }
+    },
+
+    getVariantionById: async (variant_id) => {
+        try {
+            let result = await Variation.findOne({
+                where: {
+                    id: variant_id
+                },
+                include: [{
+                    model: Product
+                }
+                    
+                ]
+            })
+            if(result) return result;
         } catch (error) {
             console.log(error);
             return false;

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 import { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -21,12 +22,14 @@ import toast from 'react-hot-toast';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from "react-redux";
 import { addToWishlistAction, fetchWishlistData } from '../../../redux/actions/wishlistAction';
+import { addToCart, fetchCartData } from '../../../redux/actions/cartAction';
 
 const CardMd = ({item}) => {
     const dispatch = useDispatch();
     const {t,i18n} = useTranslation();
     const [product,setProduct] = useState();
     const [quantity,setQuantity] = useState(1);
+    const navigate = useNavigate();
 
     const [option,setOption] = useState();
     const [variantion,setVariantion] = useState();
@@ -202,6 +205,22 @@ const CardMd = ({item}) => {
         const result = await dispatch(addToWishlistAction(product_id));
         if(result) toast.success('Đã thêm sản phẩm vào yêu thích')
         dispatch(fetchWishlistData());
+    }
+
+    const handleAddToCart = async() => {
+        let data = {
+            quantity: quantity,
+            variation_id: variantion[0].variation_id
+        }
+        let result = await dispatch(addToCart(data));
+        dispatch(fetchCartData());
+        console.log(result);
+        if(result) return toast.success('Đã thêm vào giỏ hàng');
+    }
+
+    const handleBuyNow = () => {
+        console.log(variantion[0].variation_id);
+        return navigate('/checkout?variantion=' + variantion[0].variation_id+'&quantity=' + quantity)
     }
     return (
         <>
@@ -486,11 +505,11 @@ const CardMd = ({item}) => {
                                             <i class="fa-solid fa-plus ms-4"></i>
                                         </button>
                                     </div>
-                                    <div className="add-to-cart ms-3">
+                                    <div onClick={handleAddToCart} className="add-to-cart ms-3">
                                         <button>{t('app.common._add_to_cart')}</button>
                                     </div>
                                 </div>
-                                <div className="action-bottom mt-3">
+                                <div onClick={handleBuyNow} className="action-bottom mt-3">
                                     <button>{t('app.common._buy_now')}</button>
                                 </div>
                                     

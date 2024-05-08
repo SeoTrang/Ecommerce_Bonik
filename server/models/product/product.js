@@ -26,6 +26,11 @@ const Product = sequelize.define('products',{
         type: DataTypes.TEXT,
         allowNull: true
     },
+    sold: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
+    }
     
     
 })

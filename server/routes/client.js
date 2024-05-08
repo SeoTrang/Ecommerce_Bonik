@@ -12,6 +12,7 @@ const CartController = require('../controllers/CartController');
 const OptionController = require('../controllers/optionController');
 const orderController = require('../controllers/orderController');
 const FavoriteController = require('../controllers/favoriteController');
+const VariationController = require('../controllers/variationController');
 
 // category
 router.get('/category',categoryController.getCategory);
@@ -26,7 +27,8 @@ router.get('/product-detail/:id',productController.getDetail);
 router.get('/get-product-by-nane/:Name',productController.getByName);
 router.get('/product-search/search',productController.search);
 
-
+// variation
+router.get('/get-variation/:variation_id',VariationController.getVariationById);
 // favorite products
 router.post('/favorite/:product_id',authMiddleware.checkLogin, FavoriteController.create )
 router.delete('/favorite/:product_id',authMiddleware.checkLogin, FavoriteController.delete )
@@ -59,6 +61,9 @@ router.get('/option/:product_id',OptionController.getByProduct);
 router.post('/add-new-order',authMiddleware.checkLogin,orderController.create);
 router.get('/get-order',authMiddleware.checkLogin,orderController.getAllByUser);
 router.get('/get-order-detail/:id',authMiddleware.checkLogin,orderController.getOneById);
-router.put('/update-order-status/:order_id',authMiddleware.checkLogin,orderController.updateOrderStatus);
+router.put('/update-order-status/:order_id',orderController.updateOrderStatus);
+
+
+// router.put('/update-order-status/:order_id',orderController.updateOrderStatus);
 
 module.exports = router;

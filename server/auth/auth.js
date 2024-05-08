@@ -7,7 +7,7 @@ const Auth = {
             return jwt.sign(
                 {id:user.id,admin:user.role}, 
                 process.env.ACCESS_TOKEN_SECRET,
-                {expiresIn:60*60});
+                {expiresIn: 60*60*24});
         } catch (error) {
             console.log(error.message);
             return false;
@@ -18,7 +18,7 @@ const Auth = {
             return jwt.sign(
                 {id:user.id,admin:user.Role},
                 process.env.REFRESH_TOKEN_SECRET,
-                {expiresIn:60*60});
+                {expiresIn: 60*60*24});
         } catch (error) {
             console.log(error.message);
             return false;

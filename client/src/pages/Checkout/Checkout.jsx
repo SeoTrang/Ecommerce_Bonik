@@ -7,15 +7,32 @@ import { useDispatch, useSelector } from 'react-redux';
 import formatCurrencyVND from '../../../util/formatCurrencyVND';
 import OrderAPI from '../../service/NodejsServerAPI/OrderAPI';
 import { fetchCartData } from '../../redux/actions/cartAction';
-import { useNavigate } from 'react-router-dom';
+import {Link, useLocation, useNavigate} from "react-router-dom";
+import ProductAPI from '../../service/NodejsServerAPI/ProductAPI';
 
 const Checkout = () => {
+    const search = useLocation().search;
+    const variantion_id = new URLSearchParams(search).get('variantion');
+    const quantity = new URLSearchParams(search).get('quantity');
     const notifySuccess = () => toast.success('Order successfully!');
     const notifyWarning = () => toast.success('Successfully reduced 1 product!');
     const notifyError = () => toast.error('product cannot be less than 1!');
     const cart = useSelector((state) => state.cart.carts);
+    const [productBuyNow,setProductBuyNow] = useState();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        console.log(variantion_id);
+        console.log(quantity);
+
+        async function getProductBuyNow(){
+            let result = await ProductAPI.getByVariationId(variantion_id);
+            console.log(result);
+            if(result) setProductBuyNow(result);
+        }
+        getProductBuyNow();
+    },[]);
 
     const [formData, setFormData] = useState({
         firstName: '',
@@ -98,7 +115,50 @@ const Checkout = () => {
         return true;
     }
 
+
+    const checkoutBuyNowProduct = async () => {
+        let validate = validateForm();
+        if(!validate) return toast.error('Vui lòng nhập đầy đủ thông tin !');
+        // lấy ra các sản phẩm trong giỏ hàng được tích
+        // const cartActive = cart.filter((value) => value.active)
+        // console.log(cartActive);
+        let orderDetail = [];
+        let cartDelete = []; // chứa danh sách id các item trong giỏ hàng sẽ bị xóa khi đặt hàng thành công
+        
+
+        // lấy sản phẩm cha của biến thể này 
+        
+        let orderDetailItem = {
+            avatar: productBuyNow.product.img_preview,
+            name: productBuyNow.name,
+            quantity: quantity,
+            price: productBuyNow.sale_price
+        }
+        orderDetail.push(orderDetailItem);
+        let data = {
+            order:{
+                customer_name: formData.firstName,
+                phone_number: formData.phoneNumber,
+                address: formData.detailAddress,
+                subtotal_price: totalPrice,
+                discount: 0,
+                shiping: 0,
+                total_price: totalPrice
+            },
+            orderDetail:orderDetail,
+            cartDelete: cartDelete
+        }
+
+        let result = await OrderAPI.create(data);
+        if(!result) return notifyError();
+        notifySuccess();
+        return navigate('/');
+    }
     const handleCheckout = async() => {
+        if(productBuyNow){
+            return checkoutBuyNowProduct();
+            
+        }
         let validate = validateForm();
         if(!validate) return toast.error('Vui lòng nhập đầy đủ thông tin !');
         // lấy ra các sản phẩm trong giỏ hàng được tích
@@ -123,7 +183,7 @@ const Checkout = () => {
                 address: formData.detailAddress,
                 subtotal_price: totalPrice,
                 discount: 0,
-                shiping: 34000,
+                shiping: 0,
                 total_price: totalPrice
             },
             orderDetail:orderDetail,
@@ -277,6 +337,27 @@ const Checkout = () => {
                                         </div>
                                         <hr />
                                         {
+                                            productBuyNow?
+                                            <>
+                                            <div className="product row">
+                                                        <div className="product-name col-9">
+                                                            <div className="row">
+                                                                <div className="name col-9">
+                                                                    {productBuyNow.name}
+                                                                </div>
+                                                                <span className="quantity col-3">
+                                                                    x {quantity}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div className="price col-3">
+                                                            {formatCurrencyVND(productBuyNow.sale_price*quantity)+'₫'}
+                                                        </div>
+                                                    </div>
+
+                                                    <hr />
+                                            </>
+                                            :
                                             cart &&
                                             cart.filter(value => value.active)
                                             .map((value,index)=>{
@@ -317,7 +398,14 @@ const Checkout = () => {
                                                 </div>
                                             </div>
                                             <div className="price col-4">
-                                                {formatCurrencyVND(totalPrice)+'₫'}
+                                                {
+                                                    productBuyNow ?
+                                                    (
+                                                        formatCurrencyVND(productBuyNow.sale_price * quantity)+'₫'
+                                                    )
+                                                    :
+                                                    formatCurrencyVND(totalPrice)+'₫'
+                                                }
                                             </div>
                                         </div>
 
@@ -369,7 +457,15 @@ const Checkout = () => {
                                             </div>
                                             <div className="price col-4">
                                                 <h5>
-                                                    {formatCurrencyVND(totalPrice)+'₫'}
+                                                    {
+                                                         productBuyNow ?
+                                                         (
+                                                            
+                                                            formatCurrencyVND(productBuyNow.sale_price * quantity)+'₫'
+                                                        )
+                                                         :
+                                                    formatCurrencyVND(totalPrice)+'₫'
+                                                    }
                                                 </h5>
                                             </div>
                                         </div>

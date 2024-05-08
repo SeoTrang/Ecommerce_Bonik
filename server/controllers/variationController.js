@@ -26,6 +26,19 @@ const VariationController = {
             console.log(error);
             return res.status(500).json('server error',error.message);
         }
+    },
+
+    getVariationById: async (req,res) => {
+        try {
+            let variantion_id = req.params.variation_id;
+            if(!variantion_id) return res.status(400).json('missing variantion')
+            let data = await VariationService.getVariantionById(variantion_id);
+            if(data) return res.status(200).json(data);
+            
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json('server error');
+        }
     }
 }
 

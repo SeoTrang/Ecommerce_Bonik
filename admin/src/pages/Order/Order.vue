@@ -123,7 +123,7 @@
                             <div class="tab-title tab-all">
                             
                                 Tất cả
-                                <span class='ms-1'>20</span>
+                                <span class='ms-1'>{{Orders.length}}</span>
                             </div>
                         </template>
                         <div class="container-table-order">
@@ -267,7 +267,9 @@
                             <div class="tab-title tab-pedding">
                             
                                 Chờ
-                                <span class='ms-1'>20</span>
+                                <span class='ms-1'>{{
+                                    Orders.reduce((count, item) => (item.state === 1 ? count + 1 : count), 0)
+                                }}</span>
                             </div>
                         </template>
                         
@@ -412,7 +414,9 @@
                             <div class="tab-title tab-shiping">
                             
                                 Đang giao
-                                <span class='ms-1'>20</span>
+                                <span class='ms-1'>{{
+                                    Orders.reduce((count, item) => (item.state === 2 ? count + 1 : count), 0)
+                                }}</span>
                             </div>
                         </template>
                         
@@ -434,96 +438,98 @@
                                                 </tr>
                                             </thead>
                                             <tbody  class="table-group-divider">
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox">
-                                                    </td>
-                                                    <td>
-                                                        <div class="customer">
-                                                            <div class="img d-flex align-items-center ">
-                                                                <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_17.jpg" alt="">
+                                                <tr v-for="(item, index) in Orders" :key="index" @click="handleForwardDetail(item.id)">
+                                                    <template v-if="item.state == 2">
+                                                        <td>
+                                                            <input type="checkbox">
+                                                        </td>
+                                                        <td>
+                                                            <div class="customer">
+                                                                <div class="img d-flex align-items-center ">
+                                                                    <img :src="VITE_API_URL+item.user.avatar" alt="">
+                                                                </div>
+                                                                <div class="customer-name mt-1">
+                                                                    {{item.customer_name}}
+                                                                </div>
                                                             </div>
-                                                            <div class="customer-name mt-1">
-                                                                Ma Seo Tráng
+                                                        </td>
+                                                        <td>
+                                                            <div class="code">
+                                                                {{item.code}}
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="code">
-                                                            G1OILZQN2429
-                                                        </div>
-                                                    </td>
-                                                    
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="createAt">
-                                                           21:27 11/12/2023
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="state">
-                                                            <div class="pedding">
-                                                                Chờ
+                                                        </td>
+                                                        
+                                                        <td>
+                                                            <div class="price">
+                                                                {{formatCurrencyVND(item.total_price)}}₫
                                                             </div>
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="address">
-                                                            Thái nguyên
-                                                            
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="createAt">
+                                                               21:27 11/12/2023
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="state">
+                                                                <div class="delivering">
+                                                                    Đang giao
+                                                                </div>
+                                                            </div>
+                                                        </td>
+    
+                                                        <td>
+                                                            <div class="address">
+                                                                Thái nguyên
+                                                                
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="action">
+                                                                <v-menu>
+                                                                    <template v-slot:activator="{ props }">
+                                                                        
+                                                                        <button
+                                                                        v-bind="props">
+                                                                            <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
+                                                                        </button>
+                                                                    </template>
+                                                                    <v-list class="list-action-category">
+                                                                        <v-list-item
+                                                                        >
+                                                                            <v-list-item-title>
+                                                                                <router-link to="/brand">
+                                                                                    <div class="view action">
+                                                                                        <i class="fa-solid fa-eye"></i>
+                                                                                        <span class="ms-3">Xem</span>
+                                                                                    </div>
+                                                                                </router-link>
+                                                                            </v-list-item-title>
+                                                                        </v-list-item>
+                                                                        <v-list-item
+                                                                        >
+                                                                            <v-list-item-title>
+                                                                                <div class="edit action">
+                                                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                                                    <span class="ms-3">Sửa</span>
                                                                                 </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
+                                                                            </v-list-item-title>
+                                                                        </v-list-item>
+                                                                        <v-list-item
+                                                                        >
+                                                                            <v-list-item-title>
+                                                                                <div class="delete action" @click="showModalDelete">
+                                                                                    <i class="fa-solid fa-trash"></i>
+                                                                                    <span class="ms-3">Xóa</span>
+                                                                                </div>
+                                                                                
+                                                                            </v-list-item-title>
+                                                                        </v-list-item>
+                                                                    </v-list>
+                                                                    </v-menu>
+                                                            </div>
+                                                        
+                                                        </td>
+                                                    </template>
 
                                                 </tr>
                                                 
@@ -555,7 +561,9 @@
                             <div class="tab-title tab-shipped">
                             
                                 Đã giao
-                                <span class='ms-1'>20</span>
+                                <span class='ms-1'>{{
+                                    Orders.reduce((count, item) => (item.state === 3 ? count + 1 : count), 0)
+                                }}</span>
                             </div>
                         </template>
                        
@@ -577,96 +585,98 @@
                                                 </tr>
                                             </thead>
                                             <tbody  class="table-group-divider">
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox">
-                                                    </td>
-                                                    <td>
-                                                        <div class="customer">
-                                                            <div class="img d-flex align-items-center ">
-                                                                <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_17.jpg" alt="">
+                                                <tr v-for="(item, index) in Orders" :key="index" @click="handleForwardDetail(item.id)">
+                                                    <template v-if="item.state == 3">
+                                                        <td>
+                                                            <input type="checkbox">
+                                                        </td>
+                                                        <td>
+                                                            <div class="customer">
+                                                                <div class="img d-flex align-items-center ">
+                                                                    <img :src="VITE_API_URL+item.user.avatar" alt="">
+                                                                </div>
+                                                                <div class="customer-name mt-1">
+                                                                    {{item.customer_name}}
+                                                                </div>
                                                             </div>
-                                                            <div class="customer-name mt-1">
-                                                                Ma Seo Tráng
+                                                        </td>
+                                                        <td>
+                                                            <div class="code">
+                                                                {{item.code}}
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="code">
-                                                            G1OILZQN2429
-                                                        </div>
-                                                    </td>
-                                                    
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="createAt">
-                                                           21:27 11/12/2023
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="state">
-                                                            <div class="pedding">
-                                                                Chờ
+                                                        </td>
+                                                        
+                                                        <td>
+                                                            <div class="price">
+                                                                {{formatCurrencyVND(item.total_price)}}₫
                                                             </div>
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="address">
-                                                            Thái nguyên
-                                                            
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="createAt">
+                                                               21:27 11/12/2023
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="state">
+                                                                <div class="completed">
+                                                                    Đã giao
+                                                                </div>
+                                                            </div>
+                                                        </td>
+    
+                                                        <td>
+                                                            <div class="address">
+                                                                Thái nguyên
+                                                                
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="action">
+                                                                <v-menu>
+                                                                    <template v-slot:activator="{ props }">
+                                                                        
+                                                                        <button
+                                                                        v-bind="props">
+                                                                            <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
+                                                                        </button>
+                                                                    </template>
+                                                                    <v-list class="list-action-category">
+                                                                        <v-list-item
+                                                                        >
+                                                                            <v-list-item-title>
+                                                                                <router-link to="/brand">
+                                                                                    <div class="view action">
+                                                                                        <i class="fa-solid fa-eye"></i>
+                                                                                        <span class="ms-3">Xem</span>
+                                                                                    </div>
+                                                                                </router-link>
+                                                                            </v-list-item-title>
+                                                                        </v-list-item>
+                                                                        <v-list-item
+                                                                        >
+                                                                            <v-list-item-title>
+                                                                                <div class="edit action">
+                                                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                                                    <span class="ms-3">Sửa</span>
                                                                                 </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
+                                                                            </v-list-item-title>
+                                                                        </v-list-item>
+                                                                        <v-list-item
+                                                                        >
+                                                                            <v-list-item-title>
+                                                                                <div class="delete action" @click="showModalDelete">
+                                                                                    <i class="fa-solid fa-trash"></i>
+                                                                                    <span class="ms-3">Xóa</span>
+                                                                                </div>
+                                                                                
+                                                                            </v-list-item-title>
+                                                                        </v-list-item>
+                                                                    </v-list>
+                                                                    </v-menu>
+                                                            </div>
+                                                        
+                                                        </td>
+                                                    </template>
 
                                                 </tr>
                                                 
@@ -698,7 +708,9 @@
                             <div class="tab-title tab-canceled">
                             
                                 Đã hủy
-                                <span class='ms-1'>20</span>
+                                <span class='ms-1'>{{
+                                    Orders.reduce((count, item) => (item.state === 0 ? count + 1 : count), 0)
+                                }}</span>
                             </div>
                         </template>
                         
@@ -720,98 +732,98 @@
                                                 </tr>
                                             </thead>
                                             <tbody  class="table-group-divider">
-                                                <tr>
-                                                    <td>
-                                                        <input type="checkbox">
-                                                    </td>
-                                                    <td>
-                                                        <div class="customer">
-                                                            <div class="img d-flex align-items-center ">
-                                                                <img src="https://api-prod-minimal-v510.vercel.app/assets/images/m_product/product_17.jpg" alt="">
+                                                <tr v-for="(item, index) in Orders" :key="index" @click="handleForwardDetail(item.id)">
+                                                    <template v-if="item.state == 1">
+                                                        <td>
+                                                            <input type="checkbox">
+                                                        </td>
+                                                        <td>
+                                                            <div class="customer">
+                                                                <div class="img d-flex align-items-center ">
+                                                                    <img :src="VITE_API_URL+item.user.avatar" alt="">
+                                                                </div>
+                                                                <div class="customer-name mt-1">
+                                                                    {{item.customer_name}}
+                                                                </div>
                                                             </div>
-                                                            <div class="customer-name mt-1">
-                                                                Ma Seo Tráng
+                                                        </td>
+                                                        <td>
+                                                            <div class="code">
+                                                                {{item.code}}
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="code">
-                                                            G1OILZQN2429
-                                                        </div>
-                                                    </td>
-                                                    
-                                                    <td>
-                                                        <div class="price">
-                                                            $93.68
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="createAt">
-                                                           21:27 11/12/2023
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="state">
-                                                            <div class="pedding d-inline-block">
-                                                                Chờ
+                                                        </td>
+                                                        
+                                                        <td>
+                                                            <div class="price">
+                                                                {{formatCurrencyVND(item.total_price)}}₫
                                                             </div>
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <div class="address">
-                                                            {{
-                                                                item.address
-                                                            }}
-                                                            
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action">
-                                                            <v-menu>
-                                                                <template v-slot:activator="{ props }">
-                                                                    
-                                                                    <button
-                                                                    v-bind="props">
-                                                                        <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
-                                                                    </button>
-                                                                </template>
-                                                                <v-list class="list-action-category">
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <router-link to="/brand">
-                                                                                <div class="view action">
-                                                                                    <i class="fa-solid fa-eye"></i>
-                                                                                    <span class="ms-3">Xem</span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="createAt">
+                                                               21:27 11/12/2023
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="state">
+                                                                <div class="cancelled">
+                                                                    Đã hủy
+                                                                </div>
+                                                            </div>
+                                                        </td>
+    
+                                                        <td>
+                                                            <div class="address">
+                                                                Thái nguyên
+                                                                
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="action">
+                                                                <v-menu>
+                                                                    <template v-slot:activator="{ props }">
+                                                                        
+                                                                        <button
+                                                                        v-bind="props">
+                                                                            <i class="fa-solid fa-ellipsis-vertical pe-2 ps-2"></i>
+                                                                        </button>
+                                                                    </template>
+                                                                    <v-list class="list-action-category">
+                                                                        <v-list-item
+                                                                        >
+                                                                            <v-list-item-title>
+                                                                                <router-link to="/brand">
+                                                                                    <div class="view action">
+                                                                                        <i class="fa-solid fa-eye"></i>
+                                                                                        <span class="ms-3">Xem</span>
+                                                                                    </div>
+                                                                                </router-link>
+                                                                            </v-list-item-title>
+                                                                        </v-list-item>
+                                                                        <v-list-item
+                                                                        >
+                                                                            <v-list-item-title>
+                                                                                <div class="edit action">
+                                                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                                                    <span class="ms-3">Sửa</span>
                                                                                 </div>
-                                                                            </router-link>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="edit action">
-                                                                                <i class="fa-solid fa-pen-to-square"></i>
-                                                                                <span class="ms-3">Sửa</span>
-                                                                            </div>
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                    <v-list-item
-                                                                    >
-                                                                        <v-list-item-title>
-                                                                            <div class="delete action" @click="showModalDelete">
-                                                                                <i class="fa-solid fa-trash"></i>
-                                                                                <span class="ms-3">Xóa</span>
-                                                                            </div>
-                                                                            
-                                                                        </v-list-item-title>
-                                                                    </v-list-item>
-                                                                </v-list>
-                                                                </v-menu>
-                                                        </div>
-                                                    
-                                                    </td>
+                                                                            </v-list-item-title>
+                                                                        </v-list-item>
+                                                                        <v-list-item
+                                                                        >
+                                                                            <v-list-item-title>
+                                                                                <div class="delete action" @click="showModalDelete">
+                                                                                    <i class="fa-solid fa-trash"></i>
+                                                                                    <span class="ms-3">Xóa</span>
+                                                                                </div>
+                                                                                
+                                                                            </v-list-item-title>
+                                                                        </v-list-item>
+                                                                    </v-list>
+                                                                    </v-menu>
+                                                            </div>
+                                                        
+                                                        </td>
+                                                    </template>
 
                                                 </tr>
                                                 

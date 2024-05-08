@@ -13,6 +13,8 @@ const OptionController = require('../controllers/optionController');
 const OptionValueController = require('../controllers/optionValueController');
 const CombinationController = require('../controllers/combinationController');
 const orderController = require('../controllers/orderController');
+const userController = require('../controllers/userController');
+const authMiddleware = require('../middleware/authMiddleware');
 
 // category
 router.get('/category',categoryController.getCategory);
@@ -89,4 +91,7 @@ router.post('/combination',CombinationController.create);
 router.get('/all-orders',orderController.getAll);
 router.get('/get-order-detail/:id',orderController.getOneById);
 router.put('/update-order-status/:order_id',orderController.updateOrderStatus);
+router.get('/get-user',authMiddleware.checkLogin,userController.getOne);
+
+
 module.exports = router;
